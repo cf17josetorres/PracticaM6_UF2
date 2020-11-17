@@ -16,7 +16,7 @@ public class Ex1 {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		//String ruta ="/home/cf17jose.torres/Baixades/futbol.mdb";
 		String conex = "jdbc:mysql://localhost:3306/futbol_mysql";
-		conn=DriverManager.getConnection(conex,"root","");
+		conn = DriverManager.getConnection(conex,"root","");
 		while (true) {
 			System.out.println("1.- Visualiza la lista de empleados");
 			System.out.println("2.- Mostar el empleado con maximo salario");
@@ -37,9 +37,12 @@ public class Ex1 {
 				break;
 			case 3:
 				insertar();
+				Listar();
 				break;
 			case 4:
+				Listar();
 				borrar();
+				Listar();
 				break;
 			case 5:
 				salir();
@@ -85,8 +88,13 @@ public class Ex1 {
 		return sta.executeUpdate();
 	}
 	
-	public static void borrar() throws SQLException {
-
+	public static int borrar() throws SQLException {
+		System.out.println("Introducir el nombre del empleado: " );
+		int id = reader.nextInt();
+		String sql = "delete from empleados where cod =?;";
+		PreparedStatement sta = conn.prepareStatement(sql);
+		sta.setInt(1, id);
+		return sta.executeUpdate();
 	}
 	
 	public static void salir() throws SQLException {
