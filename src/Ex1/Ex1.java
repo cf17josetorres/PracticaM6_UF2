@@ -1,3 +1,5 @@
+package Ex1;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -14,8 +16,7 @@ public class Ex1 {
 		// TODO Auto-generated method stub
 		reader = new Scanner(System.in);
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		//String ruta ="/home/cf17jose.torres/Baixades/futbol.mdb";
-		String conex = "jdbc:mysql://localhost:3306/futbol_mysql";
+		String conex = "jdbc:mysql://localhost:3306/empresa";
 		conn = DriverManager.getConnection(conex,"root","");
 		while (true) {
 			System.out.println("1.- Visualiza la lista de empleados");
