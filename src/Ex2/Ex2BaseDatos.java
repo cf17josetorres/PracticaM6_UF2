@@ -1,4 +1,4 @@
-package Ex1;
+package Ex2;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,8 +9,8 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Ex2BaseDatos {
-	private Scanner reader;
-	private Connection conn;
+	public Scanner reader;
+	public Connection conn;
 
 	public Ex2BaseDatos() {
 		try {
@@ -38,8 +38,23 @@ public class Ex2BaseDatos {
 		}
 	}
 
-	public int actualizar() {
-		String sql = "update `empleados` set `salario`= `salario` + 10000"
+	public int actualizar(Empleado emp) {
+		int num =0;
+		try {
+			String sql = "update `empleados` set `salario`= `salario` + 10000"
+					+ "where `cod_emp`=?;";
+			PreparedStatement sta = conn.prepareStatement(sql);
+			   sta = conn.prepareStatement(sql);
+			   sta.setInt(1, emp.getId());
+			   num= sta.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return num;
+	}
+		
+
+		 /* String sql = "update `empleados` set `salario`= `salario` + 10000"
 				+ "where `cod_emp`=?;";
 		System.out.println("Introducir el ID de empleado: ");
 		int id = reader.nextInt();
@@ -51,11 +66,23 @@ public class Ex2BaseDatos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return num;
-	}
+		return num;*/
+	
 
-	public int insertar() {
-		System.out.println("Introducir el nombre del empleado: ");
+	public void insertar(Empleado emp) {
+		String sql = "insert into empleados(nombre, apellidos, salario) "
+				+ "values (?,?,?);";
+		PreparedStatement sta;
+		try {
+			sta = conn.prepareStatement(sql);
+			sta.setString(1, emp.getNombre());
+			sta.setString(2, emp.getApellidos());
+			sta.setInt(3, emp.getSalario());
+			sta.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		/*System.out.println("Introducir el nombre del empleado: ");
 		String nombre = reader.next();
 		System.out.println("Introducir el apellido del empleado: ");
 		String apellidos = reader.next();
@@ -73,12 +100,22 @@ public class Ex2BaseDatos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return num;
+		return num;*/
 	}
 
-	public int borrar() {
-		System.out.println("Introducir el nombre del empleado: " );
-		int id = reader.nextInt();
+	public void borrar(Empleado emp) {
+		String sql = "delete from empleados where cod_emp =?;";
+		PreparedStatement sta;
+		try {
+			sta = conn.prepareStatement(sql);
+			sta.setInt(1, emp.getId());
+			sta.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+//		System.out.println("Introducir el nombre del empleado: " );
+		/*int id = reader.nextInt();
 		int num = 0;
 		try {
 			String sql = "delete from empleados where cod =?;";
@@ -88,6 +125,6 @@ public class Ex2BaseDatos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return num;
+		return num;*/
 	}
 }

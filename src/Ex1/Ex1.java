@@ -76,15 +76,15 @@ public class Ex1 {
 		System.out.println("Introducir el nombre del empleado: ");
 		String nombre = reader.next();
 		System.out.println("Introducir el apellido del empleado: ");
-		String apellidos = reader.next();
+		String apellido = reader.next();
 		System.out.println("Introducir el salario dle empleado: ");
 		int salario = reader.nextInt();
 		
-		String sql = "insert into empleados(nombre, apellidos, salario) "
+		String sql = "insert into empleados(nombre, apellido, salario) "
 				+ "values (?,?,?);";
 		PreparedStatement sta = conn.prepareStatement(sql);
 		sta.setString(1, nombre);
-		sta.setString(2, apellidos);
+		sta.setString(2, apellido);
 		sta.setInt(3, salario);
 		return sta.executeUpdate();
 	}
