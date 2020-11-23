@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Ex2BaseDatos {
-	public Scanner reader;
+	//public Scanner reader;
 	public Connection conn;
 
 	public Ex2BaseDatos() {
@@ -17,7 +17,7 @@ public class Ex2BaseDatos {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String conex = "jdbc:mysql://localhost:3306/empresa";
 			this.conn = DriverManager.getConnection(conex,"root","");
-			this.reader = new Scanner(System.in);
+			//this.reader = new Scanner(System.in);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
