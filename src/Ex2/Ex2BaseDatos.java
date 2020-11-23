@@ -70,7 +70,7 @@ public class Ex2BaseDatos {
 	
 
 	public void insertar(Empleado emp) {
-		String sql = "insert into empleados(nombre, apellidos, salario) "
+		String sql = "insert into empleados(nombre, apellido, salario) "
 				+ "values (?,?,?);";
 		PreparedStatement sta;
 		try {

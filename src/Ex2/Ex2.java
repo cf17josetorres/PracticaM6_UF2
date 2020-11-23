@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Ex1 {
+public class Ex2 {
 	//static Scanner reader;
 	//static Connection conn;
 	public static void main(String[] args) throws Exception {
