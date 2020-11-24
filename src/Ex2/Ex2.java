@@ -14,14 +14,11 @@ public class Ex2 {
 	//static Connection conn;
 	public static void main(String[] args) throws Exception {
 		Scanner reader = new Scanner(System.in);
-		Connection conn;
         Ex2BaseDatos db = new Ex2BaseDatos();
 
 		// TODO Auto-generated method stub
 		reader = new Scanner(System.in);
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		String conex = "jdbc:mysql://localhost:3306/empresa";
-		conn = DriverManager.getConnection(conex,"root","");
+		
 		while (true) {
 			System.out.println("1.- Visualiza la lista de empleados");
 			System.out.println("2.- Mostar el empleado con maximo salario");
