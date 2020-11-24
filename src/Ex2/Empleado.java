@@ -6,7 +6,13 @@ public class Empleado {
 	private String apellidos;
 	private int salario;
 	
-
+	public Empleado() {
+		cod_emp=0;
+		nombre="";
+		apellidos="";
+		salario=0;
+	}
+	
 	public Empleado(int id, String nombre, String apellidos, int salario) {
 		this.cod_emp = id;
 		this.nombre = nombre;
